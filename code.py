@@ -133,4 +133,22 @@ def move_up(source_node, all_obstacles, list_closed, list_open):
         if node_new not in list_closed:
             node_new_up = (c2c_up, parent_node_up, node_new)
             list_open.put(node_new_up)
+    return list_open
+
+def move_down(source_node, all_obstacles, list_closed, list_open):
+    c2c_down = source_node[0] + 1
+    parent_node_down = source_node[2]
+
+    x_coordinate_new = source_node[2][0] 
+    y_coordinate_new = source_node[2][1] - 1
+
+    node_new = (x_coordinate_new, y_coordinate_new) 
+
+    if all_obstacles(node_new) == False:
+        if node_new not in list_closed:
+            node_new_down = (c2c_down, parent_node_down, node_new)
+            list_open.put(node_new_down)
+    return list_open
+
+def diagonal_left_up()
     
