@@ -74,21 +74,6 @@ while all_obstacles(goal_point):
     goal_x_coordinate = input("Enter x coordinate of goal point \n")
     goal_y_coordinate = input("Enter y coordinate of goal point \n")
 
-x_coordinate_visited = []
-y_coordinate_visited = []
-
-start = starting_point
-goal = goal_point
-
-c2c = 0
-parent_node = None
-
-source_node = (c2c, (parent_node), (start))
-
-list_open = PriorityQueue()
-list_closed = {}
-list_open.put(source_node)
-
 
 def move_left(source_node, all_obstacles, list_closed, list_open):
     c2c_left = source_node[0] + 1
@@ -150,5 +135,71 @@ def move_down(source_node, all_obstacles, list_closed, list_open):
             list_open.put(node_new_down)
     return list_open
 
-def diagonal_left_up()
+def diagonal_right_up(source_node, all_obstacles, list_closed, list_open):
+    c2c_d_up_right = source_node[0] + 1.4
+    parent_node_d_up_right = source_node[2]
+
+    x_coordinate_new = source_node[2][0] + 1
+    y_coordinate_new = source_node[2][1] + 1
+
+    node_new = (x_coordinate_new, y_coordinate_new)
+
+    if all_obstacles(node_new) == False:
+        if node_new not in list_closed:
+            node_new_d_up_right = (c2c_d_up_right, parent_node_d_up_right, node_new)
+            list_open.put(node_new_d_up_right)
+    return list_open
+
+def diagonal_up_left(source_node, all_obstacles, list_closed, list_open):
+    c2c_d_up_left = source_node[0] + 1.4
+    parent_node_d_up_left = source_node[2]
+
+    x_coordinate_new = source_node[2][0] - 1
+    y_coordinate_new = source_node[2][1] + 1  
+
+    node_new = (x_coordinate_new, y_coordinate_new)
+
+    if all_obstacles(node_new) == False:
+        if node_new not in list_closed:
+            node_new_d_up_left = (c2c_d_up_left, parent_node_d_up_left, node_new)
+            list_open.put(node_new_d_up_left)
+
+    return list_open
+
+def diagonal_down_left(source_node, all_obstacles, list_closed, list_open):
+    c2c_d_down_left = source_node[0] + 1.4
+    parent_node_d_down_left = source_node[2]
+
+    x_coordinate_new = source_node[2][0] - 1
+    y_coordinate_new = source_node[2][1] - 1  
+
+    node_new = (x_coordinate_new, y_coordinate_new)
+
+    if all_obstacles(node_new) == False:
+        if node_new not in list_closed:
+            node_new_d_up_left = (c2c_d_down_left, parent_node_d_down_left, node_new)
+            list_open.put(node_new_d_up_left)
+
+    return list_open
+
+def diagonal_down_right(source_node, all_obstacles, list_closed, list_open):
+    c2c_d_down_right = source_node[0] + 1.4
+    parent_node_d_down_right = source_node[2]
+
+    x_coordinate_new = source_node[2][0] + 1
+    y_coordinate_new = source_node[2][1] - 1  
+
+    node_new = (x_coordinate_new, y_coordinate_new)
+
+    if all_obstacles(node_new) == False:
+        if node_new not in list_closed:
+            node_new_d_down_right = (c2c_d_down_right, parent_node_d_down_right, node_new)
+            list_open.put(node_new_d_down_right)
+
+    return list_open
+
+
+
+
+    
     
