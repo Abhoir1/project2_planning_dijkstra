@@ -42,7 +42,14 @@ def outer_boundary(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
 
-    if (x>= 0) and (x <= 300) and (y >=0) and (y <= 250):
+    if (x <= 0) and (x >= 300) and (y <=0) and (y >= 250):
         return True
     else:
         return False
+    
+def all_obstacles(point_coordinates):
+    if (rectangular_down_obstacle(point_coordinates) or rectangular_up_obstacle(point_coordinates) or hexagonal_obstacle(point_coordinates) or triangular_obstacle(point_coordinates)) == True:
+        return True
+    else:
+        return False
+    
