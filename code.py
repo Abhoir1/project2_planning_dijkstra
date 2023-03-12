@@ -1,6 +1,8 @@
 import numpy as np
 from queue import PriorityQueue
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
 
 # Defining the obstacles
 
@@ -8,7 +10,7 @@ def outer_boundary(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
 
-    if (x <= 0) and (x >= 300) and (y <=0) and (y >= 250):
+    if (x <= 5) and (x >= 595) and (y <=5) and (y >= 245):
         return True
     else:
         return False
@@ -26,7 +28,7 @@ def rectangular_down_obstacle(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
 
-    if (x >= 100) and (x <= 150) and (y>=0) and (y <= 100):
+    if (x >= 95) and (x <= 155) and (y>=0) and (y <= 105):
         return True
     else:
         return False
@@ -48,7 +50,6 @@ def triangular_obstacle(point_coordinates):
         return True
     else:
         False
-   
     
 def all_obstacles(point_coordinates):
     if (rectangular_down_obstacle(point_coordinates) or rectangular_up_obstacle(point_coordinates) or hexagonal_obstacle(point_coordinates) or triangular_obstacle(point_coordinates)) == True:
@@ -70,7 +71,7 @@ goal_x_coordinate = input("Enter x coordinate of goal point \n")
 goal_y_coordinate = input("Enter y coordinate of goal point \n")
 
 goal_point = (int(goal_x_coordinate), int(goal_y_coordinate))
-
+250
 while all_obstacles(goal_point):
     print("The given goal point lies in the obstacle space, enter new goal point \n")
     goal_x_coordinate = input("Enter x coordinate of goal point \n")
@@ -200,7 +201,6 @@ def move_diagonal_down_right(source_node, list_closed, list_open):
 
     return list_open
 
-
 x_coordinate_visited = []
 y_coordinate_visited = []
 
@@ -250,7 +250,7 @@ while present_node != start:
 optimal_path.append(start)
 optimal_path.reverse()
 
-print(optimal_path)
+# print(optimal_path)
 
 optimal_path_x_coordinates = []
 optimal_path_y_coordinates = []
@@ -259,3 +259,17 @@ for i in range(len(optimal_path)):
     optimal_path_x_coordinates.append(optimal_path[i][0])
     optimal_path_y_coordinates.append(optimal_path[i][1])
     
+fig, ax = plt.subplots(figsize=(6,2.5))
+
+rect = patches.Rectangle((100, 150), 50, 100, linewidth=1, edgecolor='r', facecolor='none')
+rect1 = patches.Rectangle((100, 0), 50, 100, linewidth=1, edgecolor='r', facecolor='none')
+center = (300, 125)
+radius = 75
+num_vertices = 6
+hexagon = patches.RegularPolygon(center, num_vertices, radius, linewidth=1, edgecolor='g', facecolor='none')
+triangle = patches.Polygon([(460, 25), (460, 225), (510, 125)], linewidth=1, edgecolor='b', facecolor='none')
+
+ax.add_patch(rect)
+ax.add_patch(rect1)
+ax.add_patch(hexagon)
+ax.add_patch(triangle)
