@@ -3,6 +3,8 @@ from queue import PriorityQueue
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+
+# Define obstacle regions
 def outer_boundary(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
@@ -54,26 +56,32 @@ def all_obstacles(point_coordinates):
     else:
         return False
     
+
+# Take user inputs for start coordinates
 start_x_coordinate = input("Enter x coordinate of starting point \n")
 start_y_coordinate = input("Enter y coordinate of starting point \n")
 
 starting_point = (int(start_x_coordinate), int(start_y_coordinate))
 
+# Check if start point lies in obstacle region, if yes ask again
 while all_obstacles(starting_point):
     print("The given starting point lies in the obstacle space, enter new starting point \n")
     start_x_coordinate = input("Enter x coordinate of starting point \n")
     start_y_coordinate = input("Enter y coordinate of starting point \n")
 
+# Take user inputs for goal coordinates
 goal_x_coordinate = input("Enter x coordinate of goal point \n")
 goal_y_coordinate = input("Enter y coordinate of goal point \n")
 
 goal_point = (int(goal_x_coordinate), int(goal_y_coordinate))
-250
+
+# Check if sgaol point lies in obstacle region, if yes ask again
 while all_obstacles(goal_point):
     print("The given goal point lies in the obstacle space, enter new goal point \n")
     goal_x_coordinate = input("Enter x coordinate of goal point \n")
     goal_y_coordinate = input("Enter y coordinate of goal point \n")
 
+# Define actions to generate new nodes
 
 def move_left(source_node, list_closed, list_open):
     c2c_left = source_node[0] + 1
@@ -198,6 +206,8 @@ def move_diagonal_down_right(source_node, list_closed, list_open):
 
     return list_open
 
+
+# Dijkstra algorithm implementation
 x_coordinate_visited = []
 y_coordinate_visited = []
 
@@ -256,6 +266,8 @@ for i in range(len(optimal_path)):
     optimal_path_x_coordinates.append(optimal_path[i][0])
     optimal_path_y_coordinates.append(optimal_path[i][1])
     
+# Visualization of the algorithm
+
 fig, ax = plt.subplots(figsize=(6,2.5))
 
 rect = patches.Rectangle((100, 150), 50, 100, linewidth=1, edgecolor='r', facecolor='none')
