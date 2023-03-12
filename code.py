@@ -3,9 +3,6 @@ from queue import PriorityQueue
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-
-# Defining the obstacles
-
 def outer_boundary(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
@@ -180,8 +177,8 @@ def move_diagonal_down_left(source_node, list_closed, list_open):
 
     if all_obstacles(node_new) == False:
         if node_new not in list_closed:
-            node_new_d_up_left = (c2c_d_down_left, parent_node_d_down_left, node_new)
-            list_open.put(node_new_d_up_left)
+            node_new_d_down_left = (c2c_d_down_left, parent_node_d_down_left, node_new)
+            list_open.put(node_new_d_down_left)
 
     return list_open
 
@@ -250,7 +247,7 @@ while present_node != start:
 optimal_path.append(start)
 optimal_path.reverse()
 
-print(optimal_path)
+# print(optimal_path)
 
 optimal_path_x_coordinates = []
 optimal_path_y_coordinates = []
