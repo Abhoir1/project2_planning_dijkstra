@@ -34,48 +34,22 @@ def hexagonal_obstacle(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
 
-    # if x >= 235.05 and x <= 364.95 and (((y - 162.5) - ((162.5 - 200)/ (235.05 - 300))* (x - 235.05)) <= 0) and (((y - 200) - ((200 - 162.5)/(300 - 364.95))* (x - 300)) <= 0) and (((y - 87.5) - ((87.5 - 50)/ (364.95 - 300))* (x - 364.95)) >= 0) and (((y - 87.5) - ((87.5 - 50)/ (364.95 - 300))* (x - 364.95)) >= 0):
-    #     return True
-    # else:
-    #     return False
-
-    v1 = (235.05 - 5, 162.5 + 5)
-    v2 = (300, 200 + 5)
-    v3 = (364.95 + 5, 162.5 + 5)
-    v4 = (364.95 + 5, 87.5 - 5)
-    v5 = (300, 50 -5)
-    v6 = (235.05 - 5, 87.5 - 5)
-
-    # if x>=v1[0] and x<=v3[0] and y<v2[1] and y>=v5[1]:
-    line1 = (y - v1[1]) - ((v1[1] - v2[1])/ (v1[0] - v2[0]))*(x - v1[0])
-    line2 = (y - v2[1]) - ((v2[1] - v3[1])/ (v2[0] - v3[0]))*(x - v2[0])
-    line4 = (y - v4[1]) - ((v4[1] - v5[1])/ (v4[0] - v5[0]))*(x - v4[0])
-    line5 = (y - v5[1]) - ((v5[1] - v6[1])/ (v5[0] - v6[0]))*(x - v5[0])
-        
-    if line1<=0 and line2 <=0 and x <= 364.95+5 and line4 >=0 and line5 >= 0 and x >= 230.05:
+    if x >= 230.05 and x <= 369.95 and (((y - 165.38) - ((165.38 - 205.77)/ (230.05 - 300))* (x - 230.05)) <= 0) and (((y - 205.77) - ((205.77 - 165.38)/(300 - 369.95))* (x - 300)) <= 0) and (((y - 84.61) - ((84.61 - 44.22)/ (369.95 - 300))* (x - 369.95)) >= 0) and (((y - 44.22) - ((44.22 - 84.61)/ (300 - 230.04))* (x - 300)) >= 0):
         return True
     else:
         return False
+
+
     
 def triangular_obstacle(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
 
-    # if x>= 460 and (((y - 225) - ((225 - 125)/ (460 - 510))*(x - 460)) <= 0) and (((y - 125) - ((125 - 25)/ (510 - 460))*(x - 510)) >= 0):
-    #     return True
-    # else:
-    #     False
-    v1 = (460 - 5, 225 + 5)
-    v2 = (500 + 5, 125)
-    v3 = (460 - 5, 25 - 5)
-
-    line1 = (y - v1[1]) - ((v1[1] - v2[1])/ (v1[0] - v2[0]))*(x - v1[0])
-    line2 = (y - v2[1]) - ((v2[1] - v3[1])/ (v2[0] - v3[0]))*(x - v2[0])
-
-    if x>= 455 and line1 <=0 and line2 >=0:
+    if x>= 460 and (((y - 225) - ((225 - 125)/ (460 - 510))*(x - 460)) <= 0) and (((y - 125) - ((125 - 25)/ (510 - 460))*(x - 510)) >= 0):
         return True
     else:
-        return False
+        False
+   
     
 def all_obstacles(point_coordinates):
     if (rectangular_down_obstacle(point_coordinates) or rectangular_up_obstacle(point_coordinates) or hexagonal_obstacle(point_coordinates) or triangular_obstacle(point_coordinates)) == True:
