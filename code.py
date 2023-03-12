@@ -1,5 +1,6 @@
 import numpy as np
 from queue import PriorityQueue
+import matplotlib.pyplot as plt
 
 # Defining the obstacles
 
@@ -38,14 +39,12 @@ def hexagonal_obstacle(point_coordinates):
         return True
     else:
         return False
-
-
     
 def triangular_obstacle(point_coordinates):
     x = point_coordinates[0]
     y = point_coordinates[1]
 
-    if x>= 460 and (((y - 225) - ((225 - 125)/ (460 - 510))*(x - 460)) <= 0) and (((y - 125) - ((125 - 25)/ (510 - 460))*(x - 510)) >= 0):
+    if x>= 455 and (((y - 246.18) - ((246.18 - 125)/ (455 - 515.59))*(x - 455)) <= 0) and (((y - 125) - ((125 - 3.81)/ (515.19 - 455))*(x - 515.59)) >= 0):
         return True
     else:
         False
