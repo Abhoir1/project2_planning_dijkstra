@@ -17,6 +17,7 @@ Wait for a while, the window will open showing the visualization of the algorith
 It takes some time for the algoritm to explore all the nodes before reaching the goal.
 
 
+
 Libraries used:
 
 numpy
