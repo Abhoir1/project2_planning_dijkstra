@@ -250,7 +250,7 @@ while present_node != start:
 optimal_path.append(start)
 optimal_path.reverse()
 
-# print(optimal_path)
+print(optimal_path)
 
 optimal_path_x_coordinates = []
 optimal_path_y_coordinates = []
@@ -273,3 +273,34 @@ ax.add_patch(rect)
 ax.add_patch(rect1)
 ax.add_patch(hexagon)
 ax.add_patch(triangle)
+
+plt.ylabel('Y')
+plt.xlabel('X')
+plt.axis([0 , 600 , 0 ,250])
+
+plot_x = 0
+plot_y = 0
+plt.title("Exploring all the Visited list")
+for i in range(len(x_coordinate_visited)) :
+    if plot_x == goal[0] and plot_y == goal[1] :
+        break
+    if len(x_coordinate_visited)>100:
+        plt.scatter(x_coordinate_visited[0:100] , y_coordinate_visited[0:100] , c='blue' , s=1)
+        plt.pause(0.0005)
+        del x_coordinate_visited[:100]
+        del y_coordinate_visited[:100]
+    else :
+        for j in range(len(x_coordinate_visited)):
+            plt.scatter(x_coordinate_visited[j] , y_coordinate_visited[j] , c='blue' , s=1)
+            plt.pause(0.0005)
+            plot_x = x_coordinate_visited[j]
+            plot_y = y_coordinate_visited[j]
+            if x_coordinate_visited[j] == goal[0] and y_coordinate_visited[j] == goal[1] :
+                break
+
+plt.title("Showing the Shortest Path")
+for i in range(len(optimal_path_x_coordinates)):
+    plt.scatter(optimal_path_x_coordinates[i] , optimal_path_y_coordinates[i] , c='yellow' , s=2, marker='D')
+    plt.pause(0.00005)
+
+plt.show
